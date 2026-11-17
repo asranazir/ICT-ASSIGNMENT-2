@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+</head>
+
+<body>
+
+    <h1>My To-Do List</h1>
+
+    <script>
+
+        let tasks = [];
+
+        function addTask() {
+
+            let task = prompt("Enter your task:");
+
+            if (task != null && task != "") { tasks.push(task);
+                alert("Task added successfully!");
+            }
+            else {
+                alert("Please enter a task.");
+            }
+        }
+
+        function removeTask() {
+
+            displayTasks();
+
+            let index = prompt("Enter task index to remove:");
+
+            index = Number(index);
+
+            if (index >= 0 && index < tasks.length && Number.isInteger(index)) {
+
+                tasks.splice(index, 1);
+
+                alert("Task removed successfully!");
+            }
+            else {
+                alert("Invalid task index!");
+            }
+        }
+
+        function displayTasks() {
+
+            if (tasks.length == 0) {
+                alert("No tasks available.");
+            }
+            else {
+
+                let result = "Your Tasks:\n";
+
+                for (let i = 0; i < tasks.length; i++) {
+
+                    result += i + ": " + tasks[i] + "\n";
+                }
+                alert(result);
+            }
+        }
+
+        function clearTasks() {
+
+            tasks = [];
+
+            alert("All tasks cleared!");
+        }
+        let choice;
+
+        do {
+            choice = prompt("Enter Command:\n" + "1. Add Task\n" + "2. Remove Task\n" + "3. View Tasks\n" + "4. Clear Tasks\n" + "5. Exit"
+            );
+
+            if (choice == "1") {
+                addTask();
+            }
+
+            else if (choice == "2") {
+                removeTask();
+            }
+
+            else if (choice == "3") {
+                displayTasks();
+            }
+
+            else if (choice == "4") {
+                clearTasks();
+            }
+
+            else if (choice == "5") {
+                alert("Program Ended!");
+            }
+
+            else {
+                alert("Invalid Command!");
+            }
+
+        } while (choice != "5" && choice != null);
+
+    </script>
+
+</body>
+</html>
